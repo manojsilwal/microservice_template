@@ -1,0 +1,26 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+ext {
+    springBootVersion = '2.1.0.RELEASE'
+}
+
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'edu.techforce.springapp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "de.codecentric:spring-boot-admin-starter-server:2.1.0"
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

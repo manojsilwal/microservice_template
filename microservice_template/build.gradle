@@ -1,0 +1,23 @@
+subprojects {
+    apply plugin: 'java'
+
+    group 'edu.techforce.springapp'
+    version '1.0-SNAPSHOT'
+
+    buildscript {
+        ext {
+            springBootVersion = '2.1.0.RELEASE'
+            springCloudVersion = 'Greenwich.M3'
+        }
+        repositories {
+            mavenCentral()
+            maven { url "https://repo.spring.io/milestone" }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}

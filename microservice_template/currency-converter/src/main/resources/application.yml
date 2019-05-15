@@ -1,0 +1,62 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+  application:
+    name: currency-converter
+  zipkin:
+    base-url: http://192.168.99.100:9411/
+  sleuth:
+    sampler:
+      probability: 1
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8888
+
+server:
+  port: 8888
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+
+forex-service:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8000,localhost:8001
+    ServerListRefreshInterval: 15000
+
+
+#Metrics related configurations
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+logging:
+  level:
+    org.springframework.web: INFO
+    edu.techforce.controllers: DEBUG
+    org.hibernate: ERROR
+  file: logs/spring-boot-logging.log
